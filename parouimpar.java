@@ -18,4 +18,5 @@ public class parouimpar {
             System.out.println(n1 + " é um número ímpar.");
         }
     }
+
 }
