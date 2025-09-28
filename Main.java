@@ -1,31 +1,40 @@
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
+
         Scanner input = new Scanner(System.in);
-        double peso;
-        double altura;
-        double imc;
 
-        System.out.print("Digite o seu peso em kg: ");
-        peso = input.nextDouble();
+    System.out.print("Digite o consumo em km/h: ");
+    int consumo = input.nextInt();
 
-        System.out.print("Digite a sua altura em metros: ");
-        altura = input.nextDouble();
+    double valorConta;
 
-        imc = peso / (altura * altura);
-
-        if (imc < 18.5) {
-            System.out.println("Você está abaixo do peso!");
-        } else if (imc < 24.99) {
-            System.out.println("Você está com o peso normal!");
-        } else if (imc < 29.99) {
-            System.out.println("Você está com sobrepeso!");
+    // Definindo o preço por faixa
+        if (consumo <= 100) {
+            valorConta = consumo * 0.50;
+        } else if (consumo <= 200) {
+            valorConta = consumo * 0.70;
         } else {
-            System.out.println("Você está obeso(a)!");
+            valorConta = consumo * 0.90;
         }
-        System.out.printf("Seu IMC é: %.1f", imc );
+
+        // Regras adicionais
+
+        if (consumo > 500) {
+            System.out.println("Consumo elevado: considere economizar energia");
+        }
+
+        if (valorConta > 200) {
+            valorConta = valorConta * 0.90; // aplica 10% de desconto
+        }
+
+        if (valorConta < 30) {
+            System.out.println("Valor nãp será cobrado neste mês. Será somado à próxima conta.");
+        } else {
+            System.out.println("Valor da conta: R$ " + valorConta);
+        }
+
+
     }
 }
